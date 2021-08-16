@@ -1,0 +1,5 @@
+.vscode
+[Oo]bj/
+[Bb]in/
+node_modules
+wwwroot

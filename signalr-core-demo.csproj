@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>signalr_core_demo</RootNamespace>
+  </PropertyGroup>
+
+    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+  </Target>
+
+  <Target Name="CleanWebRoot" BeforeTargets="Clean">
+    <Exec Command="npx del wwwroot" />
+  </Target>
+
+  <Target Name="BuildWebRoot" BeforeTargets="Build">
+    <Exec Command="npx webpack --config webpack.config.js" />
+  </Target>
+
+</Project>

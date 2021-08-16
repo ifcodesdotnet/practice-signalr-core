@@ -1,0 +1,23 @@
+{
+  "name": "ifcodes",
+  "version": "1.0.0",
+  "description": "Ismael Fernandez's personal website & blog.",
+  "main": "chat.js",
+  "scripts": {
+    "start": "webpack serve --content-base ./dist",
+    "build": "npx webpack --config webpack.config.js",
+    "clean-webroot": "npx del wwwroot"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@microsoft/signalr": "^5.0.9",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "del-cli": "^3.0.1",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
