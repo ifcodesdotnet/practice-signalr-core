@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using signalr_core_demo.Data;
+using signalr_core_demo.Entities;
 using signalr_core_demo.Models;
 
 namespace signalr_core_demo.Controllers
@@ -20,6 +22,21 @@ namespace signalr_core_demo.Controllers
 
         public IActionResult Index()
         {
+            User ismael = new User();
+            ismael.firstName = "Ismael"; 
+
+            using ChatContext dbContext = new ChatContext(); 
+            {
+                dbContext.Add(ismael);
+                dbContext.SaveChanges(); 
+            }
+
+            List<User> list = new List<User>(); 
+            using ChatContext dbContext2 = new ChatContext();
+            {
+                list = dbContext2.User.ToList(); 
+            }
+
             return View();
         }
 
