@@ -22,19 +22,11 @@ namespace signalr_core_demo.Controllers
 
         public IActionResult Index()
         {
-            User ismael = new User();
-            ismael.firstName = "Ismael"; 
-
-            using ChatContext dbContext = new ChatContext(); 
-            {
-                dbContext.Add(ismael);
-                dbContext.SaveChanges(); 
-            }
-
             List<User> list = new List<User>(); 
-            using ChatContext dbContext2 = new ChatContext();
+            
+            using ChatContext dbContext = new ChatContext();
             {
-                list = dbContext2.User.ToList(); 
+                list = dbContext.User.ToList(); 
             }
 
             return View(list);

@@ -1,0 +1,1 @@
+use master; drop database [ChatDatabase];

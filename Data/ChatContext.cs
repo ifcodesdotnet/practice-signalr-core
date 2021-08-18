@@ -42,10 +42,20 @@ namespace signalr_core_demo.Data
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<User>().HasData(new []{ 
+                new User {
+                    id = 1,
+                    firstName = "Ismael",
+                },
+                new User {
+                    id = 2,
+                    firstName = "Bob",
+                    }
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
     }
 }
