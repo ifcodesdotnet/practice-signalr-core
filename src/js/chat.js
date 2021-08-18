@@ -19,31 +19,6 @@ $("#connect").on("click", function () {
     });
 });
 
-$().on("", function () {
-    $.ajax({
-        type: "POST",
-        url: "/controller/method",
-        data: data,
-        dataType: "application/json",
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (response) {
-            console.log(response);
-        }
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
 
 
 

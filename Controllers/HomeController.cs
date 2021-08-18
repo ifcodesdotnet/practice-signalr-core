@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ using signalr_core_demo.Models;
 
 namespace signalr_core_demo.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,37 +28,22 @@ namespace signalr_core_demo.Controllers
 
         public HomeController(ILogger<HomeController> logger, IHubContext<ChatHub> chatHubContext)
         {
-            chatHubContext = _chatHubContext; 
+            _chatHubContext = chatHubContext; 
             _logger = logger;
         }
-
-        public async Task<ActionResult> LoginAsync(LoginDTO dtoModel)
-        {
-            Claim[] claims = new[] { 
-                new Claim("emailAddress", dtoModel.emailAddress) 
-            };
-
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-
-            await _chatHubContext.Clients.All.SendAsync("UserOnline"); 
-            return View(); 
-        }
-        
-
 
 
 
         public IActionResult Index()
         {
+            string name = HttpContext.User.Identity.Name; 
+
             List<UserEntity> userEntityList = new List<UserEntity>(); 
             
-            using ChatContext dbContext = new ChatContext();
-            {
-                userEntityList = dbContext.Users.ToList(); 
-            }
+            //using ChatContext dbContext = new ChatContext();
+            //{
+            //    userEntityList = dbContext.Users.ToList(); 
+            //}
 
             return View(userEntityList);
         }
