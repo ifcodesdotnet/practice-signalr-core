@@ -1,12 +1,9 @@
 # signalr-core-demo
 
-Quick demo app to play with signalR Core, Webpack, Docker, EF Core \
-
-
-
+Quick demo app to play with signalR Core, Webpack, Docker, EF Core
 
 ## Quick Documentation Links
-Working with ef core via command line [ef core tools](https://docs.microsoft.com/en-us/ef/core/get-started/overview/install) \
+[Working with ef core via command line](https://docs.microsoft.com/en-us/ef/core/get-started/overview/install) 
 
 
 
