@@ -37,7 +37,7 @@ namespace signalr_core_demo.Controllers
                 list = dbContext2.User.ToList(); 
             }
 
-            return View();
+            return View(list);
         }
 
         public IActionResult Privacy()
