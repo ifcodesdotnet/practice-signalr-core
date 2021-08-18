@@ -21,9 +21,12 @@ Once you have access to dotnet ef run the following command to run our commited 
 dotnet ef database update 
 ```
 
+[Better EF Core Entity Configuration](https://dotnetcoretutorials.com/2020/06/27/a-cleaner-way-to-do-entity-configuration-with-ef-core/)
 
 
 
+
+https://docs.microsoft.com/en-us/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-simple-key%2Csimple-key
 
 
 

@@ -10,5 +10,9 @@ namespace signalr_core_demo.Entities
         public int id { get; set; }
 
         public string firstName { get; set; }
+
+        public string lastName { get; set; }
+
+        public ICollection<UserActivityStatusEntity> activityStatus { get; set; }
     }
 }

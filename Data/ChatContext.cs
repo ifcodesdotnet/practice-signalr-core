@@ -21,6 +21,7 @@ namespace signalr_core_demo.Data
         }
 
         public virtual DbSet<UserEntity> Users { get; set; }
+        public virtual DbSet<UserActivityStatusEntity> UserActivityStatus { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,30 +33,7 @@ namespace signalr_core_demo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>(entity =>
-            {
-                entity.Property(e => e.id)
-                .UseIdentityColumn(); 
-                
-                entity.Property(e => e.firstName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<UserEntity>().HasData(new []{ 
-                new UserEntity {
-                    id = 1,
-                    firstName = "Ismael",
-                },
-                new UserEntity {
-                    id = 2,
-                    firstName = "Bob",
-                    }
-            });
-
-            OnModelCreatingPartial(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChatContext).Assembly);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
