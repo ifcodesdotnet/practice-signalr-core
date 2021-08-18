@@ -21,12 +21,16 @@ Once you have access to dotnet ef run the following command to run our commited 
 dotnet ef database update 
 ```
 
-[Better EF Core Entity Configuration](https://dotnetcoretutorials.com/2020/06/27/a-cleaner-way-to-do-entity-configuration-with-ef-core/)
+Better EF Core Configuration[EF Core Entity Configuration](https://dotnetcoretutorials.com/2020/06/27/a-cleaner-way-to-do-entity-configuration-with-ef-core/)
+
+EF Core Relationships [EF Core Relationships](https://docs.microsoft.com/en-us/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-simple-key%2Csimple-key)
+
+[signalR Sending Messages to certain users](https://stackoverflow.com/questions/19522103/signalr-sending-a-message-to-a-specific-user-using-iuseridprovider-new-2-0)
 
 
+[Mapping Connections](https://docs.microsoft.com/en-us/aspnet/signalr/overview/guide-to-the-api/mapping-users-to-connections#IUserIdProvider)
 
 
-https://docs.microsoft.com/en-us/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-simple-key%2Csimple-key
 
 
 

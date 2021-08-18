@@ -4,17 +4,17 @@
     ViewData["Title"] = "Home Page";
 }
 
-@if (Model != null)  {
+@*@if (Model != null)  {
     <ul>
         @foreach (var item in Model)
         {
             <li>@Html.DisplayFor(x => item.firstName)</li>
         }
     </ul>
-}
+}*@
 
 
-<label>User</label>
+@*<label>User</label>
 <input type="text" id="userInput" />
 <br>
 <label>Message</label>
@@ -22,4 +22,7 @@
 <br>
 <input type="button" id="sendButton" value="Send Message" />
 <br>
-<ul id="messagesList"></ul>
+<ul id="messagesList"></ul>*@
+
+<input type="button" id="connect" value="Connect" />
+<ul id="usersOnline"></ul>
