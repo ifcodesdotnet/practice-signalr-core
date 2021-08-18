@@ -3,12 +3,20 @@
 Quick demo app to play with signalR Core, Webpack, Docker, EF Core 
 
 ## Quick Documentation Links
+
+
+Before using ef core to create database we need to spin up the database via docker. Copy and paste the following command to spin up a SQL Server Container with docker
+```console
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=isamel234@22222' -p 3100:1433 -d mcr.microsoft.com/mssql/server:2019-latest
+```
+
 Working with ef core via command line [ef core tools](https://docs.microsoft.com/en-us/ef/core/get-started/overview/install) 
 
 You need to run the following command to get access to the ef core command line tools
 ```console
 dotnet tool install --global dotnet-ef
 ```
+
 Once you have access to dotnet ef run the following command to run our commited ef core migrations
 ```console
 dotnet ef database update 
