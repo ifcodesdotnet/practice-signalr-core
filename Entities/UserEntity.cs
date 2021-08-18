@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace signalr_core_demo.Entities
 {
-    public class User
+    public class UserEntity
     {
         public int id { get; set; }
 

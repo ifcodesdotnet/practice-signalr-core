@@ -9,8 +9,8 @@ using signalr_core_demo.Data;
 namespace signalr_core_demo.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20210818035017_SeedUsers")]
-    partial class SeedUsers
+    [Migration("20210818143627_CreateChatDatabase")]
+    partial class CreateChatDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace signalr_core_demo.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("signalr_core_demo.Entities.User", b =>
+            modelBuilder.Entity("signalr_core_demo.Entities.UserEntity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace signalr_core_demo.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new

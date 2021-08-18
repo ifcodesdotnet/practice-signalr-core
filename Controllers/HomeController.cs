@@ -22,14 +22,14 @@ namespace signalr_core_demo.Controllers
 
         public IActionResult Index()
         {
-            List<User> list = new List<User>(); 
+            List<UserEntity> userEntityList = new List<UserEntity>(); 
             
             using ChatContext dbContext = new ChatContext();
             {
-                list = dbContext.User.ToList(); 
+                userEntityList = dbContext.Users.ToList(); 
             }
 
-            return View(list);
+            return View(userEntityList);
         }
 
         public IActionResult Privacy()

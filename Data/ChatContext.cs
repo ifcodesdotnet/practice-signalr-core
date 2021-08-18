@@ -20,19 +20,19 @@ namespace signalr_core_demo.Data
 
         }
 
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UserEntity> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("data source=localhost, 3100;initial catalog=ChatDatabase;user id=sa; password=isamel234@22222;");
+                optionsBuilder.UseSqlServer("data source=localhost, 3100;initial catalog=ChatDatabase;user id=SA; password=isamel234@22222;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<UserEntity>(entity =>
             {
                 entity.Property(e => e.id)
                 .UseIdentityColumn(); 
@@ -42,12 +42,12 @@ namespace signalr_core_demo.Data
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<User>().HasData(new []{ 
-                new User {
+            modelBuilder.Entity<UserEntity>().HasData(new []{ 
+                new UserEntity {
                     id = 1,
                     firstName = "Ismael",
                 },
-                new User {
+                new UserEntity {
                     id = 2,
                     firstName = "Bob",
                     }

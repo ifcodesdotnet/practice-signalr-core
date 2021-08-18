@@ -18,7 +18,7 @@ namespace signalr_core_demo.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("signalr_core_demo.Entities.User", b =>
+            modelBuilder.Entity("signalr_core_demo.Entities.UserEntity", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,7 @@ namespace signalr_core_demo.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
