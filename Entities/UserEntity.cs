@@ -13,6 +13,8 @@ namespace signalr_core_demo.Entities
 
         public string lastName { get; set; }
 
+        public string emailAddress { get; set; }
+
         public ICollection<UserActivityStatusEntity> activityStatus { get; set; }
     }
 }

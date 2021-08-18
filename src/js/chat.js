@@ -17,7 +17,22 @@ $("#connect").on("click", function () {
 
         return console.error(err.toString());
     });
-}); 
+});
+
+$().on("", function () {
+    $.ajax({
+        type: "POST",
+        url: "/controller/method",
+        data: data,
+        dataType: "application/json",
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response);
+        }
+    });
+});
 
 
 

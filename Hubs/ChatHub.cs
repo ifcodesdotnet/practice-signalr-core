@@ -16,7 +16,12 @@ namespace signalr_core_demo.Hubs
             //                                     .Where(x => x.firstName == firstName)
             //                                     .FirstOrDefault(); 
             //}
+
+
             
+                //Context.
+            //return username;
+
             await base.OnConnectedAsync();
         }
 
@@ -24,5 +29,8 @@ namespace signalr_core_demo.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
+
+
+
     }
 }
