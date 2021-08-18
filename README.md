@@ -4,7 +4,6 @@ Quick demo app to play with signalR Core, Webpack, Docker, EF Core
 
 ## Quick Documentation Links
 
-
 Before using ef core to create database we need to spin up the database via docker. Copy and paste the following command to spin up a SQL Server Container with docker
 ```console
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=isamel234@22222' -p 3100:1433 -d mcr.microsoft.com/mssql/server:2019-latest
