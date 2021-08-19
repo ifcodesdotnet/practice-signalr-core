@@ -3,29 +3,24 @@ import * as signalR from "@microsoft/signalr";
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.None)
     .withUrl("/chatHub")
     .build();
 
-
 $("#connect").on("click", function () {
+    document.getElementById("connect").disabled = true;
+
     connection.start().then(function () {
-
-        var li = document.createElement("li");
-        document.getElementById("usersOnline").appendChild(li);
-        li.textContent = `${user} says ${message}`;
+        console.log("Connection Started");
     }).catch(function (err) {
-
         return console.error(err.toString());
     });
 });
 
-
-
-
-
-
-
-
+connection.on("NewUserOnline", function (userName) {
+    console.log("on NewUserOnline"); 
+    console.log(userName + "is online"); 
+});
 
 
 

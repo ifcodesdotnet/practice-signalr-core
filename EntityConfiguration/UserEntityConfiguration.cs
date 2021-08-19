@@ -28,12 +28,14 @@ namespace signalr_core_demo.EntityConfiguration
                 new UserEntity(){ 
                     id = 1,
                     firstName = "Ismael", 
-                    lastName = "Fernandez"
+                    lastName = "Fernandez",
+                    emailAddress = "a"
                 },
                 new UserEntity(){
                     id = 2,
                     firstName = "Bob",
-                    lastName = "Smith"
+                    lastName = "Smith", 
+                    emailAddress = "b"
                 }
             }); 
         }

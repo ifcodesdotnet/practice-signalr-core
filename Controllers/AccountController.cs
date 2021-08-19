@@ -26,8 +26,6 @@ namespace signalr_core_demo.Controllers
             return View();
         }
 
-
-
         //https://stackoverflow.com/questions/24892222/using-claims-types-properly-in-owin-identity-and-asp-net-mvc
 
         public async Task<ActionResult> LoginAsync(LoginDTO dtoModel)
@@ -54,7 +52,7 @@ namespace signalr_core_demo.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Account");
+            return RedirectToAction("Index");
         }
     }
 }

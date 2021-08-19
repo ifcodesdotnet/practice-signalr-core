@@ -4,14 +4,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-@*@if (Model != null)  {
+@if (Model != null)  {
     <ul>
         @foreach (var item in Model)
         {
             <li>@Html.DisplayFor(x => item.firstName)</li>
         }
     </ul>
-}*@
+}
 
 
 @*<label>User</label>
@@ -25,9 +25,6 @@
 <ul id="messagesList"></ul>*@
 
 
-
-<input type="text" id="emailAddress"/>
-<input type="button" id="submit" value="Submit" />
 
 
 <input type="button" id="connect" value="Connect" />
