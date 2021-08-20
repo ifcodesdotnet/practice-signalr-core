@@ -36,6 +36,12 @@ EF Core Relationships [EF Core Relationships](https://docs.microsoft.com/en-us/e
 
 
 
+Model State Validation Links
+https://blog.zhaytam.com/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/
+https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0
+https://exceptionnotfound.net/asp-net-mvc-demystified-modelstate/
+
+
 
 
 

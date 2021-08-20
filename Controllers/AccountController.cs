@@ -21,38 +21,49 @@ namespace signalr_core_demo.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Login()
         {
             return View();
         }
 
-        //https://stackoverflow.com/questions/24892222/using-claims-types-properly-in-owin-identity-and-asp-net-mvc
-
-        public async Task<ActionResult> LoginAsync(LoginDTO dtoModel)
+        [HttpPost]
+        public async Task<IActionResult> LoginAsync(LoginDTO dtoModel)
         {
-            UserEntity userEntity = new UserEntity(); 
-
-            using (ChatContext dbContext = new ChatContext())
+            if (ModelState.IsValid)
             {
-                userEntity = dbContext.Users
-                    .Where(x => x.emailAddress == dtoModel.emailAddress)
-                    .SingleOrDefault(); 
-            }
+                UserEntity userEntity = new UserEntity();
 
-            if (userEntity != null)
+                using (ChatContext dbContext = new ChatContext())
+                {
+                    userEntity = dbContext.Users
+                        .Where(x => x.emailAddress == dtoModel.emailAddress)
+                        .SingleOrDefault();
+                }
+
+                if (userEntity != null)
+                {
+                    Claim[] claims = new[] {
+                                new Claim(ClaimTypes.NameIdentifier, Convert.ToString(userEntity.id), ClaimValueTypes.Integer32),
+                                new Claim(ClaimTypes.Name, userEntity.firstName + " " + userEntity.lastName, ClaimValueTypes.String),
+                            };
+
+                    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("emailAddress","Email Address not found");
+                    return View(dtoModel); 
+                }
+            }
+            else
             {
-                Claim[] claims = new[] {
-                    new Claim(ClaimTypes.NameIdentifier, Convert.ToString(userEntity.id), ClaimValueTypes.Integer32),
-                    new Claim(ClaimTypes.Name, userEntity.firstName + " " + userEntity.lastName, ClaimValueTypes.String),
-                };
-                
-                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-
-                return RedirectToAction("Index", "Home");
+                return View(dtoModel); 
             }
-
-            return RedirectToAction("Index");
         }
     }
 }

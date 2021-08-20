@@ -27,7 +27,7 @@ namespace signalr_core_demo
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
-                options.LoginPath = "/Account"; 
+                options.LoginPath = "/Account/Login"; 
             });
 
             services.AddControllersWithViews();
@@ -65,7 +65,7 @@ namespace signalr_core_demo
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
 
                 endpoints.MapHub<ChatHub>("/chatHub");
             });

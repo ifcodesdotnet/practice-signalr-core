@@ -1,0 +1,30 @@
+﻿@model signalr_core_demo.DTO.LoginDTO
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.TextBoxFor(x => x.emailAddress)
+
+    <text>
+        <br>
+    </text>
+
+    @Html.TextBoxFor(x => x.password)
+
+    <text>
+        <br>
+    </text>
+
+    @Html.ValidationSummary(false, "")
+
+    <text>
+        <br>
+    </text>
+
+    <input type="submit" value="Submit" />
+}

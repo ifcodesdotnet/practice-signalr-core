@@ -12,7 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "@microsoft/signalr": "^5.0.9",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "jquery-validation": "^1.19.3",
+    "jquery-validation-unobtrusive": "^3.2.12"
   },
   "devDependencies": {
     "del-cli": "^3.0.1",

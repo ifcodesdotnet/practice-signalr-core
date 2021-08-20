@@ -38,12 +38,12 @@ namespace signalr_core_demo.Controllers
         {
             string name = HttpContext.User.Identity.Name; 
 
-            List<UserEntity> userEntityList = new List<UserEntity>(); 
-            
-            //using ChatContext dbContext = new ChatContext();
-            //{
-            //    userEntityList = dbContext.Users.ToList(); 
-            //}
+            List<UserEntity> userEntityList = new List<UserEntity>();
+
+            using ChatContext dbContext = new ChatContext();
+            {
+                userEntityList = dbContext.Users.ToList();
+            }
 
             return View(userEntityList);
         }
