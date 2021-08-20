@@ -1,9 +1,5 @@
 import * as signalR from "@microsoft/signalr";
 
-import * as validator from "jquery-validation";
-import * as unobtrusive from "jquery-validation-unobtrusive";
-
-
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder()
@@ -23,14 +19,14 @@ $("#connect").on("click", function () {
 
 connection.on("NewUserOnline", function (userName) {
     console.log("on NewUserOnline"); 
-    console.log(userName + "is online"); 
+    console.log(userName + " is online"); 
 });
 
 
 
-if ($.validator) {
-    console.log("in that if state"); 
-}
+//if ($.validator) {
+//    console.log("in that if state"); 
+//}
 
 
 

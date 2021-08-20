@@ -3,7 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: ["./src/js/chat.js"]
+        login: './src/js/login.js',
+        chat: './src/js/chat.js',
   },
   output: {
     filename: "js/[name].[contenthash].js",

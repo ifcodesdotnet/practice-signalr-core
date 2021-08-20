@@ -1,10 +1,15 @@
-﻿@model IEnumerable<signalr_core_demo.Entities.UserEntity>  
+﻿@model IEnumerable<signalr_core_demo.Entities.UserEntity>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@if (Model != null)  {
+
+<input type="button" id="connect" value="Connect" />
+<ul id="usersOnline"></ul>
+
+@if (Model != null)
+{
     <ul>
         @foreach (var item in Model)
         {
@@ -13,19 +18,4 @@
     </ul>
 }
 
-
-@*<label>User</label>
-<input type="text" id="userInput" />
-<br>
-<label>Message</label>
-<input type="text" id="messageInput" />
-<br>
-<input type="button" id="sendButton" value="Send Message" />
-<br>
-<ul id="messagesList"></ul>*@
-
-
-
-
-<input type="button" id="connect" value="Connect" />
-<ul id="usersOnline"></ul>
+<script asp-src-include="~/js/chat.*.js"></script>
