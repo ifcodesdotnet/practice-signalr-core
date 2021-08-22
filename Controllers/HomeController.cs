@@ -21,34 +21,7 @@ namespace signalr_core_demo.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        private readonly IHubContext<ChatHub> _chatHubContext;
-
-
-        public HomeController(ILogger<HomeController> logger, IHubContext<ChatHub> chatHubContext)
-        {
-            _chatHubContext = chatHubContext; 
-            _logger = logger;
-        }
-
-
-
         public IActionResult Index()
-        {
-            string name = HttpContext.User.Identity.Name; 
-
-            List<UserEntity> userEntityList = new List<UserEntity>();
-
-            using ChatContext dbContext = new ChatContext();
-            {
-                userEntityList = dbContext.Users.ToList();
-            }
-
-            return View(userEntityList);
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }

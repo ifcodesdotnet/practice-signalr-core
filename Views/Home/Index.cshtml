@@ -1,21 +1,9 @@
-﻿@model IEnumerable<signalr_core_demo.Entities.UserEntity>
-
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 
 <input type="button" id="connect" value="Connect" />
 <ul id="usersOnline"></ul>
 
-@if (Model != null)
-{
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li>@Html.DisplayFor(x => item.firstName)</li>
-        }
-    </ul>
-}
 
 <script asp-src-include="~/js/chat.*.js"></script>

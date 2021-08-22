@@ -10,8 +10,6 @@ namespace signalr_core_demo.Hubs
     {
         public override async Task OnConnectedAsync()
         {
-            await Clients.All.SendAsync("NewUserOnline", Context.User.Identity.Name);
-            
             await base.OnConnectedAsync();
         }
     }

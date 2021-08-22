@@ -14,6 +14,9 @@ namespace signalr_core_demo.EntityConfiguration
         {
             builder.Property(x => x.id)
                    .UseIdentityColumn();
+            
+            builder.HasIndex(x => x.id)
+                    .IsUnique();
 
             builder.Property(x => x.firstName)
                    .HasMaxLength(50);
@@ -21,21 +24,27 @@ namespace signalr_core_demo.EntityConfiguration
             builder.Property(x => x.lastName)
                    .HasMaxLength(50);
 
+            builder.Property(x => x.emailAddress)
+                   .HasMaxLength(50);
+
+            builder.HasIndex(x => x.emailAddress)
+                    .IsUnique();
+
             builder.HasMany(x => x.activityStatus)
-                    .WithOne(); 
+                   .WithOne();
 
             builder.HasData(new[] { 
                 new UserEntity(){ 
                     id = 1,
                     firstName = "Ismael", 
                     lastName = "Fernandez",
-                    emailAddress = "a"
+                    emailAddress = "test1"
                 },
                 new UserEntity(){
                     id = 2,
                     firstName = "Bob",
                     lastName = "Smith", 
-                    emailAddress = "b"
+                    emailAddress = "test2"
                 }
             }); 
         }
