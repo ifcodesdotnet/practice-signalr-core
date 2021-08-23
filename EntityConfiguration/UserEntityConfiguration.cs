@@ -12,39 +12,39 @@ namespace signalr_core_demo.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
-            builder.Property(x => x.id)
+            builder.Property(x => x.Id)
                    .UseIdentityColumn();
             
-            builder.HasIndex(x => x.id)
+            builder.HasIndex(x => x.Id)
                     .IsUnique();
 
-            builder.Property(x => x.firstName)
+            builder.Property(x => x.FirstName)
                    .HasMaxLength(50);
 
-            builder.Property(x => x.lastName)
+            builder.Property(x => x.LastName)
                    .HasMaxLength(50);
 
-            builder.Property(x => x.emailAddress)
+            builder.Property(x => x.EmailAddress)
                    .HasMaxLength(50);
 
-            builder.HasIndex(x => x.emailAddress)
+            builder.HasIndex(x => x.EmailAddress)
                     .IsUnique();
 
-            builder.HasMany(x => x.activityStatus)
+            builder.HasMany(x => x.Connections)
                    .WithOne();
 
             builder.HasData(new[] { 
-                new UserEntity(){ 
-                    id = 1,
-                    firstName = "Ismael", 
-                    lastName = "Fernandez",
-                    emailAddress = "test1"
+                new UserEntity(){
+                    Id = 1,
+                    FirstName = "Ismael", 
+                    LastName = "Fernandez",
+                    EmailAddress = "test1"
                 },
                 new UserEntity(){
-                    id = 2,
-                    firstName = "Bob",
-                    lastName = "Smith", 
-                    emailAddress = "test2"
+                    Id = 2,
+                    FirstName = "Bob",
+                    LastName = "Smith", 
+                    EmailAddress = "test2"
                 }
             }); 
         }

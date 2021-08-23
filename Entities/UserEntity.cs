@@ -7,14 +7,14 @@ namespace signalr_core_demo.Entities
 {
     public class UserEntity
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
 
-        public string lastName { get; set; }
+        public string LastName { get; set; }
 
-        public string emailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
-        public ICollection<UserActivityStatusEntity> activityStatus { get; set; }
+        public ICollection<ConnectionEntity> Connections { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace signalr_core_demo.Data
         }
 
         public virtual DbSet<UserEntity> Users { get; set; }
-        public virtual DbSet<UserActivityStatusEntity> UserActivityStatus { get; set; }
+        public virtual DbSet<ConnectionEntity> Connections { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

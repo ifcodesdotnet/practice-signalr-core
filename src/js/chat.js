@@ -5,16 +5,22 @@ import * as signalR from "@microsoft/signalr";
 var connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.None)
     .withUrl("/chatHub")
-    .build();
+    .build(); 
 
 connection.start().then(function () {
-    console.log("Connection Started");
+
 }).catch(function (err) {
     return console.error(err.toString());
 });
 
-connection.on("NewUserOnline", function (userFullName) {
+connection.on("UserOnline", function (userFullName) {
     var li = document.createElement("li");
-    document.getElementById("messagesList").appendChild(li);
-    li.textContent = userFullName; 
+    document.getElementById("usersOnline").appendChild(li);
+    li.textContent = userFullName + " is online"; 
+});
+
+connection.on("UserOffline", function (userFullName) {
+    //var li = document.createElement("li");
+    //document.getElementById("usersOnline").appendChild(li);
+    //li.textContent = userFullName + " is offline";
 });

@@ -19,59 +19,55 @@ namespace signalr_core_demo.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("signalr_core_demo.Entities.UserActivityStatusEntity", b =>
+            modelBuilder.Entity("signalr_core_demo.Entities.ConnectionEntity", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("ConnectionID")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("UserEntityid")
-                        .HasColumnType("int");
+                    b.Property<bool>("Connected")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime>("lastOnlineTimestamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("userDeviceIpAddress")
+                    b.Property<string>("UserAgent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.Property<int?>("UserEntityId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("UserEntityid");
+                    b.HasKey("ConnectionID");
 
-                    b.ToTable("UserActivityStatus");
+                    b.HasIndex("UserEntityId");
+
+                    b.ToTable("Connections");
                 });
 
             modelBuilder.Entity("signalr_core_demo.Entities.UserEntity", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("emailAddress")
+                    b.Property<string>("EmailAddress")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("firstName")
+                    b.Property<string>("FirstName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("lastName")
+                    b.Property<string>("LastName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("emailAddress")
+                    b.HasIndex("EmailAddress")
                         .IsUnique()
-                        .HasFilter("[emailAddress] IS NOT NULL");
+                        .HasFilter("[EmailAddress] IS NOT NULL");
 
-                    b.HasIndex("id")
+                    b.HasIndex("Id")
                         .IsUnique();
 
                     b.ToTable("Users");
@@ -79,30 +75,30 @@ namespace signalr_core_demo.Migrations
                     b.HasData(
                         new
                         {
-                            id = 1,
-                            emailAddress = "test1",
-                            firstName = "Ismael",
-                            lastName = "Fernandez"
+                            Id = 1,
+                            EmailAddress = "test1",
+                            FirstName = "Ismael",
+                            LastName = "Fernandez"
                         },
                         new
                         {
-                            id = 2,
-                            emailAddress = "test2",
-                            firstName = "Bob",
-                            lastName = "Smith"
+                            Id = 2,
+                            EmailAddress = "test2",
+                            FirstName = "Bob",
+                            LastName = "Smith"
                         });
                 });
 
-            modelBuilder.Entity("signalr_core_demo.Entities.UserActivityStatusEntity", b =>
+            modelBuilder.Entity("signalr_core_demo.Entities.ConnectionEntity", b =>
                 {
                     b.HasOne("signalr_core_demo.Entities.UserEntity", null)
-                        .WithMany("activityStatus")
-                        .HasForeignKey("UserEntityid");
+                        .WithMany("Connections")
+                        .HasForeignKey("UserEntityId");
                 });
 
             modelBuilder.Entity("signalr_core_demo.Entities.UserEntity", b =>
                 {
-                    b.Navigation("activityStatus");
+                    b.Navigation("Connections");
                 });
 #pragma warning restore 612, 618
         }

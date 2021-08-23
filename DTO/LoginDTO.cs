@@ -14,7 +14,7 @@ namespace signalr_core_demo.DTO
         [DisplayName("Email Address")]
         public string emailAddress { get; set; }
 
-        [Required(ErrorMessage = "Please enter a password.")]
+        //[Required(ErrorMessage = "Please enter a password.")]
         [DisplayName("Password")]
         public string password { get; set; }
     }

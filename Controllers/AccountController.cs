@@ -59,24 +59,22 @@ namespace signalr_core_demo.Controllers
                 using (ChatContext dbContext = new ChatContext())
                 {
                     userEntity = dbContext.Users
-                        .Where(x => x.emailAddress == dtoModel.emailAddress)
+                        .Where(x => x.EmailAddress == dtoModel.emailAddress)
                         .SingleOrDefault();
                 }
 
                 if (userEntity != null)
                 {
                     Claim[] claims = new[] {
-                                new Claim(ClaimTypes.NameIdentifier, Convert.ToString(userEntity.id), ClaimValueTypes.Integer32),
-                                new Claim(ClaimTypes.Name, userEntity.firstName + " " + userEntity.lastName, ClaimValueTypes.String),
+                                new Claim(ClaimTypes.NameIdentifier, Convert.ToString(userEntity.Id), ClaimValueTypes.Integer32),
+                                new Claim(ClaimTypes.Name, userEntity.FirstName + " " + userEntity.LastName, ClaimValueTypes.String),
                     };
 
-                    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    ClaimsIdentity identity = new ClaimsIdentity(claims, 
+                        CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    //Asynchronous sign in a user and alert all currently online users that a new user is online
-                    await Task.WhenAll(
-                        HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity)),
-                        _chatHubContext.Clients.All.SendAsync("NewUserOnline", userEntity.firstName + " " + userEntity.lastName)
-                        );
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(identity)); 
 
                     return RedirectToAction("Index", "Home");
                 }
