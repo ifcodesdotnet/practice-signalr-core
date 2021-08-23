@@ -36,7 +36,7 @@ EF Core Relationships [EF Core Relationships](https://docs.microsoft.com/en-us/e
 
 
 
-Model State Validation Links
+## Model State Validation Links
 https://blog.zhaytam.com/2019/04/13/asp-net-core-checking-modelstate-isvalid-is-boring/
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0
 https://exceptionnotfound.net/asp-net-mvc-demystified-modelstate/
@@ -49,18 +49,18 @@ https://exceptionnotfound.net/asp-net-mvc-demystified-modelstate/
 
 
 
-Link to javascript api \
+## Link to javascript api 
 https://docs.microsoft.com/en-us/javascript/api/@microsoft/signalr/?view=signalr-js-latest \ 
 
-
-Send message to certain user \ 
+ 
+## Send message to certain user \ 
 https://stackoverflow.com/questions/19522103/signalr-sending-a-message-to-a-specific-user-using-iuseridprovider-new-2-0 \ 
 
-ES6 Importing and Exporting \
+##ES6 Importing and Exporting 
 https://www.freecodecamp.org/news/how-to-use-es6-modules-and-why-theyre-important-a9b20b480773/ \
 https://www.digitalocean.com/community/tutorials/js-modules-es6 \ 
 
-Dealing with EF Core \ 
+##Dealing with EF Core  
 https://docs.microsoft.com/en-us/ef/core/get-started/overview/install \
 https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx \
 https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx#database-update
