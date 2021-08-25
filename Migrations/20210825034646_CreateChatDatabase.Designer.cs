@@ -10,7 +10,7 @@ using signalr_core_demo.Data;
 namespace signalr_core_demo.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20210823050844_CreateChatDatabase")]
+    [Migration("20210825034646_CreateChatDatabase")]
     partial class CreateChatDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,15 +29,21 @@ namespace signalr_core_demo.Migrations
                     b.Property<bool>("Connected")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("DisconnectedTimestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("InitiatedTimestamp")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UserAgent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserEntityId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("ConnectionID");
 
-                    b.HasIndex("UserEntityId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Connections");
                 });
@@ -93,9 +99,11 @@ namespace signalr_core_demo.Migrations
 
             modelBuilder.Entity("signalr_core_demo.Entities.ConnectionEntity", b =>
                 {
-                    b.HasOne("signalr_core_demo.Entities.UserEntity", null)
+                    b.HasOne("signalr_core_demo.Entities.UserEntity", "User")
                         .WithMany("Connections")
-                        .HasForeignKey("UserEntityId");
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("signalr_core_demo.Entities.UserEntity", b =>

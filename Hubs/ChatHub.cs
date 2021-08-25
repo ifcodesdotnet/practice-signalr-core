@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using System;
 using Microsoft.EntityFrameworkCore;
+using signalr_core_demo.ViewModels;
+using System.Collections.Generic;
 
 namespace signalr_core_demo.Hubs
 {
@@ -12,6 +14,8 @@ namespace signalr_core_demo.Hubs
     {
         public override async Task OnConnectedAsync()
         {
+            UserViewModel userViewModel = new UserViewModel(); 
+
             using (ChatContext dbContext = new ChatContext())
             {
                 try
@@ -20,12 +24,19 @@ namespace signalr_core_demo.Hubs
                         .Include(x => x.Connections)
                         .SingleOrDefault(x => x.Id == Convert.ToInt32(Context.UserIdentifier));
 
-                    userEntity.Connections.Add(new ConnectionEntity
-                    {
+                    userEntity.Connections.Add(new ConnectionEntity {
                         ConnectionID = Context.ConnectionId,
                         UserAgent = Context.GetHttpContext().Request.Headers["User-Agent"],
+                        InitiatedTimestamp = DateTime.Now,
                         Connected = true
                     });
+
+                    #region Mapping ViewModel to Entity
+                    userViewModel.EmailAddress = userEntity.EmailAddress; 
+                    userViewModel.FirstName = userEntity.FirstName; 
+                    userViewModel.LastName = userEntity.LastName; 
+                    userViewModel.Id = userEntity.Id;
+                    #endregion
 
                     dbContext.SaveChanges();
                 }
@@ -35,22 +46,39 @@ namespace signalr_core_demo.Hubs
                 }
             }
 
-            await Clients.All.SendAsync("UserOnline", Context.User.Identity.Name);
+            await Clients.All.SendAsync("UserOnline", userViewModel);
             await base.OnConnectedAsync();
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            var omg = Context.ConnectionId; 
+            UserViewModel userViewModel = new UserViewModel();
+
             using (ChatContext dbContext = new ChatContext())
             {
                 ConnectionEntity connectionEntity = dbContext.Connections
                     .Find(Context.ConnectionId);
 
+                dbContext.Entry(connectionEntity)
+                    .Reference(x => x.User).Load();
+
+                UserEntity userEntity = connectionEntity
+                    .User; 
+
                 connectionEntity.Connected = false;
+                connectionEntity.DisconnectedTimestamp = DateTime.Now;
+
+                #region Mapping ViewModel to Entity
+                userViewModel.EmailAddress = userEntity.EmailAddress;
+                userViewModel.FirstName = userEntity.FirstName;
+                userViewModel.LastName = userEntity.LastName;
+                userViewModel.Id = userEntity.Id;
+                #endregion
+
                 dbContext.SaveChanges();
             }
 
+            await Clients.All.SendAsync("UserOffline", userViewModel);
             await base.OnDisconnectedAsync(exception);
         }
     }

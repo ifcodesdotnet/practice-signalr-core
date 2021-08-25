@@ -31,7 +31,7 @@ namespace signalr_core_demo.EntityConfiguration
                     .IsUnique();
 
             builder.HasMany(x => x.Connections)
-                   .WithOne();
+                   .WithOne(x => x.User);
 
             builder.HasData(new[] { 
                 new UserEntity(){

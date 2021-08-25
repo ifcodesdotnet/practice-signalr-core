@@ -13,13 +13,17 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
-connection.on("UserOnline", function (userFullName) {
-    var li = document.createElement("li");
-    document.getElementById("usersOnline").appendChild(li);
-    li.textContent = userFullName + " is online"; 
+connection.on("UserOnline", function (userViewModel) {
+    console.log("user online"); 
+    console.log(userViewModel); 
+    //var li = document.createElement("li");
+    //document.getElementById("usersOnline").appendChild(li);
+    //li.textContent = userFullName + " is online"; 
 });
 
-connection.on("UserOffline", function (userFullName) {
+connection.on("UserOffline", function (userViewModel) {
+    console.log("user offline"); 
+    console.log(userViewModel); 
     //var li = document.createElement("li");
     //document.getElementById("usersOnline").appendChild(li);
     //li.textContent = userFullName + " is offline";

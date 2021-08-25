@@ -12,13 +12,20 @@ namespace signalr_core_demo.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<ConnectionEntity> builder)
         {
-            builder.Property(x => x.ConnectionID); 
+            builder.Property(x => x.ConnectionID);
 
             builder.Property(x => x.Connected);
 
             builder.Property(x => x.UserAgent);
 
-            builder.HasKey(x=> x.ConnectionID); 
+            builder.Property(x => x.InitiatedTimestamp); 
+
+            builder.Property(x => x.DisconnectedTimestamp);
+
+            builder.HasKey(x => x.ConnectionID);
+            
+            builder.HasOne(e => e.User)
+                .WithMany(c => c.Connections);
         }
     }
 }
