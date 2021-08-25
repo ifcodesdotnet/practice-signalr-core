@@ -20,9 +20,9 @@ namespace signalr_core_demo.Hubs
             {
                 try
                 {
-                    UserEntity userEntity = dbContext.Users
+                    UserEntity userEntity = await dbContext.Users
                         .Include(x => x.Connections)
-                        .SingleOrDefault(x => x.Id == Convert.ToInt32(Context.UserIdentifier));
+                        .SingleOrDefaultAsync(x => x.Id == Convert.ToInt32(Context.UserIdentifier));
 
                     userEntity.Connections.Add(new ConnectionEntity {
                         ConnectionID = Context.ConnectionId,
@@ -80,6 +80,11 @@ namespace signalr_core_demo.Hubs
 
             await Clients.All.SendAsync("UserOffline", userViewModel);
             await base.OnDisconnectedAsync(exception);
+        }
+        
+        public async Task SendMessage(string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", Context.User.Identity.Name, message);
         }
     }
 }

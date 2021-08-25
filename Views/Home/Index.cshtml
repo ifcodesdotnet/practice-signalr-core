@@ -1,9 +1,18 @@
-﻿@{
+﻿@model signalr_core_demo.ViewModels.ChatViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<input type="button" id="connect" value="Connect" />
+<form>
+    @Html.LabelFor(x => x.Message.Content)
+    <br>
+    @Html.TextAreaFor(x => x.Message.Content)
+    <br>
+    <input type="button" value="Submit" />
+</form>
+
+
+
 <ul id="usersOnline"></ul>
-
-
 <script asp-src-include="~/js/chat.*.js"></script>
+
