@@ -1,5 +1,14 @@
 import * as signalR from "@microsoft/signalr";
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import '../css/styles.css';
+import 'font-awesome/css/font-awesome.min.css';
+
+
+
+
+
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder()

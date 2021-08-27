@@ -46,8 +46,10 @@ dotnet ef database update
 - https://docs.microsoft.com/en-us/ef/core/get-started/overview/install 
 - https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx 
 - https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx#database-update
-
 - [Configuring One To Many Relationships in Entity Framework Core](https://www.learnentityframeworkcore.com/configuration/one-to-many-relationship-configuration)
 - [How to get only few properties from related data in EF core?](https://stackoverflow.com/questions/59054309/how-to-get-only-few-properties-from-related-data-in-ef-core)
 - [C# Entity-ramework: How can I combine a .Find and .Include on a Model Object?](https://stackoverflow.com/questions/7348663/c-sharp-entity-framework-how-can-i-combine-a-find-and-include-on-a-model-obje)
 - [Loading Related Data](https://docs.microsoft.com/en-us/ef/core/querying/related-data/)
+
+## Quick Bootstrap Template 
+- [User profile with friends and chat](https://www.bootdey.com/snippets/view/User-profile-with-friends-and-chat#html)
