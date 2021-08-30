@@ -51,5 +51,10 @@ dotnet ef database update
 - [C# Entity-ramework: How can I combine a .Find and .Include on a Model Object?](https://stackoverflow.com/questions/7348663/c-sharp-entity-framework-how-can-i-combine-a-find-and-include-on-a-model-obje)
 - [Loading Related Data](https://docs.microsoft.com/en-us/ef/core/querying/related-data/)
 
-## Quick Bootstrap Template 
+## Quick Bootstrap Templates
 - [User profile with friends and chat](https://www.bootdey.com/snippets/view/User-profile-with-friends-and-chat#html)
+- [Chat Room](https://www.bootdey.com/snippets/view/chat-room)
+
+## Bootstrap CSS Help
+- [How can I add a vertical scrollbar to my div automatically?](https://stackoverflow.com/questions/18183296/how-can-i-add-a-vertical-scrollbar-to-my-div-automatically)
+- [How to remove the gutter (spacing) between columns in Bootstrap?](https://stackoverflow.com/questions/21254889/how-to-remove-the-gutter-spacing-between-columns-in-bootstrap)
