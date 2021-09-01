@@ -54,6 +54,7 @@ dotnet ef database update
 ## Quick Bootstrap Templates
 - [User profile with friends and chat](https://www.bootdey.com/snippets/view/User-profile-with-friends-and-chat#html)
 - [Chat Room](https://www.bootdey.com/snippets/view/chat-room)
+- [Table User List](https://www.bootdey.com/snippets/view/table-user-list)
 
 ## Bootstrap CSS Help
 - [How can I add a vertical scrollbar to my div automatically?](https://stackoverflow.com/questions/18183296/how-can-i-add-a-vertical-scrollbar-to-my-div-automatically)
