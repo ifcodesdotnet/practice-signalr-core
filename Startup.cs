@@ -30,7 +30,8 @@ namespace signalr_core_demo
                 options.LoginPath = "/Account/Login"; 
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation(); 
+
             services.AddSignalR();
    
         }
