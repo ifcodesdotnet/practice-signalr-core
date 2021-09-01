@@ -47,7 +47,7 @@
                                 First Name
                             </div>
                             <div class="profile-user-details-value">
-                                John
+                                @Html.DisplayFor(x => x.User.FirstName) 
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">
@@ -55,7 +55,7 @@
                                 Last Name
                             </div>
                             <div class="profile-user-details-value">
-                                Doe
+                                @Html.DisplayFor(x => x.User.LastName)
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">
@@ -72,7 +72,7 @@
                                 Email
                             </div>
                             <div class="profile-user-details-value">
-                                johndoe@bootdey.com
+                                @Html.DisplayFor(x => x.User.EmailAddress)
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">

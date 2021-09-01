@@ -2,7 +2,10 @@ import * as signalR from "@microsoft/signalr";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+
 import '../css/styles.css';
+import '../css/chat.css';
+
 import 'font-awesome/css/font-awesome.min.css';
 
 

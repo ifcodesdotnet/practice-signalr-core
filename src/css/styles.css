@@ -38,6 +38,9 @@ h3 > span {
     padding: 4px;
     margin-top: 10px;
     margin-bottom: 10px;
+
+    height: auto;
+    max-width: 60%;
 }
 
 #user-profile .profile-label {
@@ -108,7 +111,8 @@ h3 > span {
     }
 
 #user-profile .profile-tabs {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    margin-top: -5px;
 }
 
 #user-profile .profile-user-info {
