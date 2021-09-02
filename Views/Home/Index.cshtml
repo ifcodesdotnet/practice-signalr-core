@@ -47,7 +47,7 @@
                                 First Name
                             </div>
                             <div class="profile-user-details-value">
-                                @Html.DisplayFor(x => x.User.FirstName) 
+                                @Html.DisplayFor(x => x.CurrentUser.FirstName) 
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">
@@ -55,7 +55,7 @@
                                 Last Name
                             </div>
                             <div class="profile-user-details-value">
-                                @Html.DisplayFor(x => x.User.LastName)
+                                @Html.DisplayFor(x => x.CurrentUser.LastName)
                             </div>
                         </div>
                         <div class="profile-user-details clearfix">
@@ -63,7 +63,7 @@
                                 Email
                             </div>
                             <div class="profile-user-details-value">
-                                @Html.DisplayFor(x => x.User.EmailAddress)
+                                @Html.DisplayFor(x => x.CurrentUser.EmailAddress)
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="tab-users">
-                            @await Html.PartialAsync("~/Views/Home/_Users.cshtml")
+                            @await Html.PartialAsync("~/Views/Home/_Users.cshtml",Model.UserList)
                         </div>
 
                         <div class="tab-pane fade" id="tab-chat">

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace signalr_core_demo.Utilities
@@ -10,7 +11,9 @@ namespace signalr_core_demo.Utilities
     {
         public string GetUserId(HubConnectionContext connection)
         {
-            return string.Empty; 
+            Claim nameIdentifierClaim = connection.User.FindFirst(ClaimTypes.NameIdentifier);
+
+            return nameIdentifierClaim.Value; 
         }
     }
 }

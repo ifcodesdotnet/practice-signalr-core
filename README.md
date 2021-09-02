@@ -59,3 +59,10 @@ dotnet ef database update
 ## Bootstrap CSS Help
 - [How can I add a vertical scrollbar to my div automatically?](https://stackoverflow.com/questions/18183296/how-can-i-add-a-vertical-scrollbar-to-my-div-automatically)
 - [How to remove the gutter (spacing) between columns in Bootstrap?](https://stackoverflow.com/questions/21254889/how-to-remove-the-gutter-spacing-between-columns-in-bootstrap)
+
+
+
+
+https://stackoverflow.com/questions/40275195/how-to-set-up-automapper-in-asp-net-core
+
+https://stackoverflow.com/questions/51966231/how-to-use-iuseridprovider-in-net-core

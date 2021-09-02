@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using signalr_core_demo.Hubs;
+using signalr_core_demo.Utilities;
 
 namespace signalr_core_demo
 {
@@ -30,10 +32,14 @@ namespace signalr_core_demo
                 options.LoginPath = "/Account/Login"; 
             });
 
+            services.AddAutoMapper(typeof(MappingProfile));
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); 
 
             services.AddSignalR();
-   
+
+            services.AddSingleton<IUserIdProvider, UserIdService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

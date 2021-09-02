@@ -35,7 +35,7 @@ namespace signalr_core_demo.Hubs
                     userViewModel.EmailAddress = userEntity.EmailAddress; 
                     userViewModel.FirstName = userEntity.FirstName; 
                     userViewModel.LastName = userEntity.LastName; 
-                    userViewModel.Id = userEntity.Id;
+                    //userViewModel.Id = userEntity.Id;
                     #endregion
 
                     dbContext.SaveChanges();
@@ -72,7 +72,7 @@ namespace signalr_core_demo.Hubs
                 userViewModel.EmailAddress = userEntity.EmailAddress;
                 userViewModel.FirstName = userEntity.FirstName;
                 userViewModel.LastName = userEntity.LastName;
-                userViewModel.Id = userEntity.Id;
+                //userViewModel.Id = userEntity.Id;
                 #endregion
 
                 dbContext.SaveChanges();

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -22,30 +23,40 @@ namespace signalr_core_demo.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private readonly IMapper _mapper;
+
+        public HomeController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public IActionResult Index()
         {
-            UserEntity userEntity = new UserEntity(); 
+            ChatViewModel chatViewModel = new ChatViewModel();
 
+            UserEntity userEntity = new UserEntity(); 
+            List<UserEntity> userEntityList = new List<UserEntity>(); 
+
+
+            
+            
             Claim nameIdentifierClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+
 
             using (ChatContext dbContext = new ChatContext())
             {
                 userEntity = dbContext.Users
-                    .Find(Convert.ToInt32(nameIdentifierClaim.Value)); 
+                    .Find(Convert.ToInt32(nameIdentifierClaim.Value));
+                
+                userEntityList = dbContext
+                    .Users.ToList();
             }
 
-            ChatViewModel chatViewModel = new ChatViewModel() {
-                User = new UserViewModel ()
-                {
-                    FirstName = userEntity.FirstName, 
-                    LastName = userEntity.LastName, 
-                    EmailAddress = userEntity.EmailAddress, 
-                }, 
-                Message = new MessageViewModel()
-                {
+            chatViewModel.CurrentUser = _mapper.Map<UserViewModel>(userEntity);
 
-                }
-            };  
+
+            chatViewModel.UserList = _mapper.Map<List<UserViewModel>>(userEntityList);
+            chatViewModel.Message = new MessageViewModel(); 
 
             return View(chatViewModel);
         }
